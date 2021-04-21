@@ -45,12 +45,15 @@ class NeuralNetwork():
         return output
 
 
+# features (hours for studying and hours for studying)
+# output (mark)
+
 X = np.array(([2, 9], [1, 5], [3, 6]), dtype=float)
 Y = np.array(([92], [86], [89]), dtype=float)
-xtest = np.array(([4, 8]), dtype=float)
+xTest = np.array(([4, 8]), dtype=float)
 
 X = X / np.max(X, axis=0)
-xtest = xtest / np.max(xtest, axis=0)
+xTest = xTest / np.max(xTest, axis=0)
 Y = Y / 100
 
 # print(X)
@@ -58,12 +61,12 @@ Y = Y / 100
 # print(Y)
 
 nn = NeuralNetwork()
-nn.__int__(X, Y, 5, 1)
+nn.__int__(X, Y, 2, 1)
 
 for i in range(1000):
     nn.forwardProp()
     nn.backProp()
 
-predicted = nn.predict(X)
+predicted = nn.predict(xTest) * 100
 print(predicted)
-print(np.sum(np.square(Y - predicted)))
+# print(np.sum(np.square(Y - predicted)))
